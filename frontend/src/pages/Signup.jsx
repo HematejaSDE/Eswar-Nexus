@@ -60,7 +60,7 @@ const Signup = () => {
     setError('');
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/register', formData);
+      const response = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/auth/register`, formData);
       handleAuthSuccess(response.data);
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to connect to server. Please try again.');
@@ -80,7 +80,7 @@ const Signup = () => {
           { headers: { Authorization: `Bearer ${tokenResponse.access_token}` } }
         );
 
-        const response = await axios.post('http://localhost:5000/api/auth/google-token', {
+        const response = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/auth/google-token`, {
           googleId: googleUser.sub,
           email: googleUser.email,
           name: googleUser.name,

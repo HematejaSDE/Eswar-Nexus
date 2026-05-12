@@ -65,7 +65,7 @@ const Login = () => {
     setError('');
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', formData);
+      const response = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/auth/login`, formData);
       handleLoginSuccess(response.data);
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to connect to server. Please check your credentials.');
@@ -85,7 +85,7 @@ const Login = () => {
           { headers: { Authorization: `Bearer ${tokenResponse.access_token}` } }
         );
 
-        const response = await axios.post('http://localhost:5000/api/auth/google-token', {
+        const response = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/auth/google-token`, {
           googleId: googleUser.sub,
           email: googleUser.email,
           name: googleUser.name,
