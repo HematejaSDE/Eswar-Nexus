@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  body {
+    @apply bg-background text-text font-sans antialiased overflow-x-hidden selection:bg-primary/30 selection:text-white;
+  }
+}
+
+@layer utilities {
+  /* Premium Apple-style frosted glass */
+  .glass {
+    @apply bg-white/[0.04] backdrop-blur-3xl border border-white/[0.08] shadow-glass;
+  }
+  
+  .glass-card {
+    @apply bg-[#1A1D24]/80 backdrop-blur-2xl border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.4)];
+  }
+
+  .glass-panel {
+    @apply bg-[#232730]/80 backdrop-blur-2xl border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.3)];
+  }
+  
+  /* Soft, friendly glow */
+  .ambient-glow {
+    box-shadow: 0 0 50px rgba(0, 102, 255, 0.1);
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-[#FFFFFF] to-[#A1A1A6];
+  }
+  
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#0066FF] to-[#5E5CE6];
+  }
+}
+
+/* Custom Scrollbar - Minimal */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #222;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+/* Base chart stroke overrides */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: rgba(255, 255, 255, 0.03);
+}
+
+.recharts-tooltip-cursor {
+  fill: rgba(255, 255, 255, 0.02);
+}
